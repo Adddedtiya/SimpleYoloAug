@@ -51,6 +51,9 @@ for img, ann in tqdm(DatasetTuple):
         combined_image_path = os.path.join(args.outdir, rootfname)
         combined_annotation_path = os.path.join(args.outdir, rootfname)
         
+        if os.path.isfile(combined_image_path + '.jpg'):
+            continue
+                
         Write_File(img_raw, ann_raw, combined_image_path + ".jpg", combined_annotation_path + ".txt")
         
         for i in range(args.gen):
